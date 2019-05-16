@@ -6,12 +6,41 @@
 #
 #    http://shiny.rstudio.com/
 #
-library(C50)
-library(class)
-library(e1071)
-library(shiny)
-library(randomcoloR)
-library(markdown)
+if(!require(C50))
+{
+    install.packages('C50')
+    library(C50)
+}
+
+if(!require(class))
+{
+    install.packages('class')
+    library(class)
+}
+
+if(!require(e1071))
+{
+    install.packages('e1071')
+    library(e1071)
+}
+
+if(!require('shiny'))
+{
+    install.packages('shiny')
+    library(shiny)
+}
+
+if(!require(randomcoloR))
+{
+    install.packages('randomcoloR')
+    library(randomcoloR)
+}
+
+if(!require(markdown))
+{
+    install.packages('markdown')
+    library(markdown)
+}
 
 # preprocessing the raw data
 bcancer <- read.csv('https://raw.githubusercontent.com/salhasan/finalshinyapp/master/data.csv')
@@ -89,7 +118,7 @@ ui <- navbarPage("Breast Cancer Prediction Application",
                           
                           
                  ),
-                 tabPanel("About", includeMarkdown("about.md"))
+                 tabPanel("About", includeMarkdown("README.md"))
 )
 
 # Define server logic required to draw a plot
